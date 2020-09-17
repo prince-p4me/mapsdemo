@@ -1,29 +1,20 @@
 import React, { Component } from 'react';
-import { StatusBar, View } from "react-native";
+import { StatusBar, View, SafeAreaView } from "react-native";
 import Constants from '../utilities/Constants';
 import NavigationService from '../Services/NavigationService';
 import { connect } from 'react-redux'
 import Colors from '../utilities/Colors';
 
-class AuthScreen extends Component {
+class HomeScreen extends Component {
   componentDidMount = () => {
     // this.props.setAddress();
-    console.log("AuthScreen");
-
-    let { token, user } = this.props;
-    setTimeout(async () => {
-      if (user) {
-        NavigationService.navigate("DashBoard");
-      } else {
-        NavigationService.navigate("Login");
-      }
-    }, 2000);
+    console.log("LoginScreen");
   }
 
   render() {
     return (
-      <View style={{
-        flex: 1, backgroundColor: Colors.red,
+      <SafeAreaView style={{
+        flex: 1, backgroundColor: Colors.gold,
         alignItems: "center"
       }}>
         <StatusBar backgroundColor={Colors.theme} barStyle="light-content" />
@@ -31,7 +22,7 @@ class AuthScreen extends Component {
           flex: 1, backgroundColor: "red"
         }}></View>
         {/* <Text>Auth Screen</Text> */}
-      </View>
+      </SafeAreaView>
     )
   }
 }
@@ -42,4 +33,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(AuthScreen)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setAddress: (data) => dispatch(Actions.setAddress(data)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

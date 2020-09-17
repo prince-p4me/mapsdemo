@@ -5711,6 +5711,13 @@ react-native-keyboard-aware-scrollview@2.0.0:
   resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scrollview/-/react-native-keyboard-aware-scrollview-2.0.0.tgz#a7e2cc31b7230893db5dc05eb6fed3f358500a55"
   integrity sha512-VAkwrmNl00bjTLXcvB3EMxuJ06kEBVRfpUq61X0Wl6Gdy1iSQpv04dVbZZ3KIflA9VhAlE0HFPltLLXIGjf2Ug==
 
+react-native-loading-spinner-overlay@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-loading-spinner-overlay/-/react-native-loading-spinner-overlay-1.1.0.tgz#169b2cdb939cf49186640dc2f50718c57e4d9a00"
+  integrity sha512-PMTMM4zdQkZlORKWzHhDTlFicMfDHz5vbAfwxUnQbVeGwdFezZKG7J/0KyJMtOUPZYzUjouo+uIOoydYM/Xt+A==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-native-reanimated@^1.4.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/react-native-reanimated/-/react-native-reanimated-1.13.0.tgz#1ee5d27d34bd2cee7dfad4ae9a3673300872c917"

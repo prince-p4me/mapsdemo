@@ -19,9 +19,12 @@ import NavigationService from "./src/Services/NavigationService";
 
 //utilities
 import Colors from "./src/utilities/Colors";
+import Loader from "./src/components/Loader";
 
 //screens
 import AuthScreen from './src/screens/Auth';
+import LoginScreen from './src/screens/Login';
+import HomeScreen from './src/screens/Home';
 
 //navigators
 // const StoreStack = createStackNavigator({
@@ -34,8 +37,8 @@ import AuthScreen from './src/screens/Auth';
 const Navigations = createAppContainer(
   createSwitchNavigator({
     Auth: AuthScreen,
-    // LoginStack: LoginStack,
-    // MainStack: DashBoard,
+    Login: LoginScreen,
+    DashBoard: HomeScreen
   }, {
     initialRouteName: "Auth"
   })
@@ -75,6 +78,7 @@ export default class App extends React.Component {
             ref={navigatorRef => {
               NavigationService.setTopLevelNavigator(navigatorRef);
             }} />
+          <Loader />
         </PersistGate>
       </Provider>
     );
