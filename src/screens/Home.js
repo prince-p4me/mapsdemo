@@ -1,42 +1,81 @@
 import React, { Component } from 'react';
-import { StatusBar, View, SafeAreaView } from "react-native";
-import Constants from '../utilities/Constants';
-import NavigationService from '../Services/NavigationService';
+import { StatusBar, View, SafeAreaView, FlatList, StyleSheet } from "react-native";
 import { connect } from 'react-redux'
 import Colors from '../utilities/Colors';
+import CommonHeader from '../components/CommonHeader';
+import Globalstyles from "./style";
+import { TextSemiBold, TextRegular, TextMedium } from '../components/TextView';
+import Sizes from '../utilities/Sizes';
 
 class HomeScreen extends Component {
   componentDidMount = () => {
     // this.props.setAddress();
-    console.log("LoginScreen");
+    console.log("HomeScreen");
+    console.log(JSON.stringify(this.props));
   }
 
-  render() {
+  renderItem = item => {
+    console.log("rendering");
     return (
-      <SafeAreaView style={{
-        flex: 1, backgroundColor: Colors.gold,
-        alignItems: "center"
-      }}>
+      <View style={styles.employee}>
+        <TextSemiBold title={item.name} style={{ fontSize: Sizes.regular }} />
+        <TextRegular title={item.email} style={{ fontSize: Sizes.small }} />
+        <TextRegular title={item.phoneNo} style={{ fontSize: Sizes.small }} />
+        <View style={{ width: "100%", flexDirection: "row", }}>
+          <View style={{ width: "50%", flexDirection: "row", }}>
+            <TextMedium title="Age :- " style={{ fontSize: Sizes.small }} />
+            <TextRegular title={item.age} style={{ fontSize: Sizes.small }} />
+          </View>
+          <View style={{ width: "50%", flexDirection: "row", }}>
+            <TextMedium title="Gender :- " style={{ fontSize: Sizes.small }} />
+            <TextRegular title={item.gender} style={{ fontSize: Sizes.small }} />
+          </View>
+        </View>
+      </View>
+    )
+  }
+
+  keyExtractor = (item) => item.id.toString();
+
+  render() {
+    let { list } = this.props;
+    console.log("list:--" + list.length);
+    return (
+      <View style={Globalstyles.safeArea}>
+        <SafeAreaView style={{ width: "100%", backgroundColor: Colors.theme }}></SafeAreaView>
         <StatusBar backgroundColor={Colors.theme} barStyle="light-content" />
-        <View style={{
-          flex: 1, backgroundColor: "red"
-        }}></View>
+        <CommonHeader title="Dashboard" />
+        <FlatList contentContainerStyle={{ flexGrow: 1, }}
+          showsVerticalScrollIndicator={false}
+          data={list}
+          renderItem={({ item, index }) => this.renderItem(item, index)}
+          keyExtractor={this.keyExtractor}
+          ListFooterComponent={() => (
+            <View style={{ height: 30 }}></View>
+          )}
+          ItemSeparatorComponent={() => (
+            <View style={{ height: 1, width: "100%", backgroundColor: Colors.grey }}></View>
+          )} />
         {/* <Text>Auth Screen</Text> */}
-      </SafeAreaView>
+      </View>
     )
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    list: state.employees,
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setAddress: (data) => dispatch(Actions.setAddress(data)),
-  }
-}
+export default connect(mapStateToProps, null)(HomeScreen)
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
+const styles = StyleSheet.create({
+  employee: {
+    height: 80,
+    width: Constants.width,
+    paddingHorizontal: 14,
+    paddingVertical: 7,
+    justifyContent: "space-around"
+  }
+})

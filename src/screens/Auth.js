@@ -9,10 +9,9 @@ import * as Actions from "../redux/action";
 
 class AuthScreen extends Component {
   componentDidMount = () => {
-    // this.props.setAddress();
     console.log("AuthScreen");
     this.props.setLoading(true);
-    let { token, user } = this.props;
+    let { user } = this.props;
     setTimeout(() => {
       if (user && user.username) {
         NavigationService.navigate("DashBoard");

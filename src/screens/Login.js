@@ -26,10 +26,10 @@ class LoginScreen extends Component {
 
 
   componentDidMount = () => {
-    // this.setState({
-    //   "username": "hruday@gmail.com",
-    //   "password": "hruday123"
-    // })
+    this.setState({
+      "username": "hruday@gmail.com",
+      "password": "hruday123"
+    })
     console.log("LoginScreen");
   }
 
