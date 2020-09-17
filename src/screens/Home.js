@@ -11,11 +11,11 @@ class HomeScreen extends Component {
   componentDidMount = () => {
     // this.props.setAddress();
     console.log("HomeScreen");
-    console.log(JSON.stringify(this.props));
+    // console.log(JSON.stringify(this.props));
   }
 
   renderItem = item => {
-    console.log("rendering");
+    // console.log("rendering");
     return (
       <View style={styles.employee}>
         <TextSemiBold title={item.name} style={{ fontSize: Sizes.regular }} />
@@ -39,7 +39,7 @@ class HomeScreen extends Component {
 
   render() {
     let { list } = this.props;
-    console.log("list:--" + list.length);
+    // console.log("list:--" + list.length);
     return (
       <View style={Globalstyles.safeArea}>
         <SafeAreaView style={{ width: "100%", backgroundColor: Colors.theme }}></SafeAreaView>

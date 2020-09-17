@@ -12,9 +12,7 @@ import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from "./src/redux/store";
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
 import Toast from "react-native-simple-toast";
-import { connect } from 'react-redux'
 
 import NavigationService from "./src/Services/NavigationService";
 
@@ -27,13 +25,6 @@ import AuthScreen from './src/screens/Auth';
 import LoginScreen from './src/screens/Login';
 import HomeScreen from './src/screens/Home';
 
-//navigators
-// const StoreStack = createStackNavigator({
-// 	Category: StoreCategory,
-// 	SubCategory: StoreSubCategory,
-// 	NearStores: NearStoresScreen,
-// 	Store: StoreScreen
-// })
 
 const Navigations = createAppContainer(
   createSwitchNavigator({
