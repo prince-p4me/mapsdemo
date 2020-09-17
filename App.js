@@ -14,6 +14,7 @@ import { store, persistor } from "./src/redux/store";
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import Toast from "react-native-simple-toast";
+import { connect } from 'react-redux'
 
 import NavigationService from "./src/Services/NavigationService";
 
@@ -44,7 +45,7 @@ const Navigations = createAppContainer(
   })
 );
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props)
     this.lastBackButtonPress = null;
@@ -84,3 +85,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App;

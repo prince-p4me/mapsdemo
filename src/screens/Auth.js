@@ -4,34 +4,32 @@ import Constants from '../utilities/Constants';
 import NavigationService from '../Services/NavigationService';
 import { connect } from 'react-redux'
 import Colors from '../utilities/Colors';
+import { TextSemiBold } from '../components/TextView';
+import * as Actions from "../redux/action";
 
 class AuthScreen extends Component {
   componentDidMount = () => {
     // this.props.setAddress();
     console.log("AuthScreen");
-
+    this.props.setLoading(true);
     let { token, user } = this.props;
-    setTimeout(async () => {
-      if (user) {
+    setTimeout(() => {
+      if (user && user.username) {
         NavigationService.navigate("DashBoard");
       } else {
         NavigationService.navigate("Login");
       }
-    }, 2000);
+      this.props.setLoading(false);
+    }, 1000)
   }
 
   render() {
     return (
       <View style={{
-        flex: 1, backgroundColor: Colors.red,
-        alignItems: "center"
-      }}>
-        <StatusBar backgroundColor={Colors.theme} barStyle="light-content" />
-        <View style={{
-          flex: 1, backgroundColor: "red"
-        }}></View>
-        {/* <Text>Auth Screen</Text> */}
-      </View>
+        flex: 1, backgroundColor: Colors.backgroundPageColor,
+        alignItems: "center",
+        justifyContent: "center"
+      }}></View>
     )
   }
 }
@@ -42,4 +40,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, null)(AuthScreen)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setLoading: (data) => dispatch(Actions.setLoading(data)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AuthScreen)

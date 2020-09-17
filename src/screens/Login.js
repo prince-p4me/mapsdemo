@@ -10,6 +10,9 @@ import Globalstyles from "./style";
 import Toast from 'react-native-simple-toast';
 import { TextBold } from '../components/TextView';
 import Sizes from '../utilities/Sizes';
+import * as Actions from "../redux/action";
+import userJson from '../assets/jsons/user.json';
+import employeelistJson from '../assets/jsons/employeelist.json';
 
 class LoginScreen extends Component {
   constructor(props) {
@@ -23,7 +26,10 @@ class LoginScreen extends Component {
 
 
   componentDidMount = () => {
-    // this.props.setAddress();
+    // this.setState({
+    //   "username": "hruday@gmail.com",
+    //   "password": "hruday123"
+    // })
     console.log("LoginScreen");
   }
 
@@ -42,6 +48,33 @@ class LoginScreen extends Component {
     }, 100);
   }
 
+  login = () => {
+    let { username, password } = this.state;
+    if (!username) {
+      Toast.showWithGravity("Please enter email ID", Toast.LONG, Toast.BOTTOM);
+      return;
+    }
+    if (!Constants.emailcontext.test(username)) {
+      Toast.showWithGravity("Please enter valid email ID", Toast.SHORT, Toast.BOTTOM);
+      return
+    }
+    if (!password) {
+      Toast.showWithGravity("Please enter password", Toast.LONG, Toast.BOTTOM);
+      return;
+    }
+    if ((userJson.username != userJson) && (userJson.password != password)) {
+      Toast.showWithGravity("Invalid Credentials", Toast.LONG, Toast.BOTTOM);
+      return;
+    }
+    this.props.setLoading(true);
+    setTimeout(() => {
+      this.props.setUser(userJson);
+      this.props.setEmployeeList(employeelistJson);
+      this.props.setLoading(false);
+      NavigationService.navigate("DashBoard");
+    }, 1000)
+  }
+
   render() {
     return (
       <View style={Globalstyles.safeArea}>
@@ -58,9 +91,9 @@ class LoginScreen extends Component {
                 </View>
                 <TextInput style={styles.input}
                   value={this.state.username}
-                  placeholder="Email Id or Mobile Number"
+                  placeholder="Email Id"
                   placeholderTextColor={Colors.textColor}
-                  keyboardType={"default"}
+                  keyboardType={"email-address"}
                   onChangeText={(value) => this.setState({ username: value })}
                   returnKeyType={"next"}
                   autoCapitalize="none"
@@ -88,7 +121,8 @@ class LoginScreen extends Component {
                 >
                 </TextInput>
               </View>
-              <TouchableOpacity style={styles.loginButton} activeOpacity={.7}>
+              <TouchableOpacity style={styles.loginButton} activeOpacity={.7}
+                onPress={() => this.login()}>
                 <TextBold title="LOGIN" style={styles.loginText}></TextBold>
               </TouchableOpacity>
             </View>
@@ -99,19 +133,15 @@ class LoginScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    user: state.user,
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
-    setAddress: (data) => dispatch(Actions.setAddress(data)),
+    setLoading: (data) => dispatch(Actions.setLoading(data)),
+    setUser: (data) => dispatch(Actions.setUser(data)),
+    setEmployeeList: (data) => dispatch(Actions.setEmployeeList(data)),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen)
+export default connect(null, mapDispatchToProps)(LoginScreen)
 
 const styles = StyleSheet.create({
   loginText: { fontSize: Sizes.large, color: Colors.white },

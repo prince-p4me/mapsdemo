@@ -9,4 +9,5 @@ export default Constants = {
 	width: Dimensions.get("window").width,
 	currency: "₹",
 	version: "1.0.7",
+	emailcontext: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 };
