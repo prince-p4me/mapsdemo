@@ -1,5 +1,4 @@
 export default ActionsTypes = {
-  USER: "USER",
-  EMPLOYEELIST: "EMPLOYEELIST",
+  ITEMS: "ITEMS",
   LOADER: "LOADER"
 }

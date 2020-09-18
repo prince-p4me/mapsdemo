@@ -35,7 +35,7 @@ export default class CommonHeader extends React.Component {
         <Image source={Images.back} style={{
           width: 15, height: 15,
           resizeMode: "contain",
-          tintColor: Colors.white
+          tintColor: color
         }}
         ></Image>
         {/* <Text style={styles.backBtnText}> Back</Text> */}
@@ -46,7 +46,7 @@ export default class CommonHeader extends React.Component {
   renderToolbar() {
     let { isTransparent, noBack, titleView, title, rightPress, rightImg, color } = this.props;
     return (
-      <View style={isTransparent ? styles.transparentToolbar : styles.toolbar}>
+      <View style={styles.toolbar}>
         <View style={{
           flex: 1,
           flexDirection: 'row',
@@ -117,6 +117,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     elevation: 3,
     shadowRadius: 0,
+    borderBottomColor: Colors.grey,
+    borderBottomWidth: 1
   },
   transparentToolbar: {
     height: (Platform.OS === 'ios') ? 44 : 56,

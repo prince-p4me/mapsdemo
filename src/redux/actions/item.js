@@ -1,9 +1,9 @@
 import ActionTypes from '../types'
 
-export const setEmployeeList = (data) => {
+export const setItemList = (data) => {
   console.log("saving")
   return {
-    type: ActionTypes.EMPLOYEELIST,
+    type: ActionTypes.ITEMS,
     payload: data
   };
 }

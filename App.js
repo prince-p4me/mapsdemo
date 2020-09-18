@@ -11,6 +11,7 @@ import { StatusBar, BackHandler } from 'react-native';
 import { Provider } from "react-redux";
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from "./src/redux/store";
+import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import Toast from "react-native-simple-toast";
 
@@ -21,19 +22,18 @@ import Colors from "./src/utilities/Colors";
 import Loader from "./src/components/Loader";
 
 //screens
-import AuthScreen from './src/screens/Auth';
-import LoginScreen from './src/screens/Login';
 import HomeScreen from './src/screens/Home';
+import DetailsScreen from './src/screens/Details';
 
+const MainStack = createStackNavigator({
+  Home: HomeScreen,
+  Details: DetailsScreen,
+}, {
+  headerMode: "none"
+})
 
 const Navigations = createAppContainer(
-  createSwitchNavigator({
-    Auth: AuthScreen,
-    Login: LoginScreen,
-    DashBoard: HomeScreen
-  }, {
-    initialRouteName: "Auth"
-  })
+  MainStack
 );
 
 class App extends React.Component {
