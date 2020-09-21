@@ -84,7 +84,12 @@ export default class CommonHeader extends React.Component {
           <View style={styles.rightButton}>
             {rightImg ?
               <TouchableOpacity style={styles.headerButton} onPress={() => rightPress()}>
-                <Image source={rightImg ? rightImg : null} style={{ width: 20, height: 20, resizeMode: "contain" }}></Image>
+                <Image source={rightImg ? rightImg : null}
+                  style={{
+                    width: 20, height: 20,
+                    resizeMode: "contain",
+                    tintColor: Colors.red
+                  }}></Image>
               </TouchableOpacity> : null
             }
           </View>

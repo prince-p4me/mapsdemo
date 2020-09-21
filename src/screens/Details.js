@@ -15,8 +15,8 @@ export default class DetailsScreen extends Component {
 
   componentDidMount = () => {
     let { navigation } = this.props;
-    let item = navigation.getParam("item", null);
-    this.setState({ item });
+    // let item = navigation.getParam("item", null);
+    // this.setState({ item });
     // this.props.setAddress();
     console.log("HomeScreen");
     // console.log(JSON.stringify(this.props));
@@ -54,8 +54,8 @@ export default class DetailsScreen extends Component {
       <View style={Globalstyles.safeArea}>
         <SafeAreaView style={{ width: "100%", backgroundColor: Colors.theme }}></SafeAreaView>
         <StatusBar backgroundColor={Colors.theme} barStyle="light-content" />
-        <CommonHeader title="Details" color={Colors.black} />
-        {this.renderItem()}
+        <CommonHeader title="Map Navigtion" color={Colors.black} />
+        {/* {this.renderItem()} */}
         {/* <Text>Auth Screen</Text> */}
       </View>
     )
