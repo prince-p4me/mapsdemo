@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1065123914542",
+    "firebase_url": "https://fourexpresscargo.firebaseio.com",
+    "project_id": "fourexpresscargo",
+    "storage_bucket": "fourexpresscargo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065123914542:android:4ea6e4613779f9331910bf",
+        "android_client_info": {
+          "package_name": "com.enuke.expresscargo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065123914542-8cntpeelap9rmvl7hmu1ji5rev9ni39h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzKAyq8vz1lPoaB9J3nrVFB4azm_3Wi9I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065123914542-8cntpeelap9rmvl7hmu1ji5rev9ni39h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

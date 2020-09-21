@@ -22,12 +22,12 @@ import Colors from "./src/utilities/Colors";
 import Loader from "./src/components/Loader";
 
 //screens
+import MapScreen from './src/screens/Map/Map';
 import HomeScreen from './src/screens/Home';
-import DetailsScreen from './src/screens/Details';
 
 const MainStack = createStackNavigator({
   Home: HomeScreen,
-  Details: DetailsScreen,
+  Map: MapScreen,
 }, {
   headerMode: "none"
 })

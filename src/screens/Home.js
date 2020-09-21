@@ -15,10 +15,11 @@ import * as Actions from "../redux/action";
 import Toast from 'react-native-simple-toast';
 import ViewPager from '@react-native-community/viewpager';
 import NetInfo from "@react-native-community/netinfo";
+import CachedImage from 'react-native-image-cache-wrapper';
 
 class HomeScreen extends Component {
   state = {
-    list: []
+    // list: []
   }
 
   componentDidMount = async () => {
@@ -35,6 +36,7 @@ class HomeScreen extends Component {
       this.props.setLoading(false);
       console.log("responseJson");
       console.log(responseJson);
+      // this.props.setItems(responseJson);
       this.props.setItems(responseJson.slice(0, 100));
     } catch (error) {
       this.props.setLoading(false);
@@ -86,22 +88,22 @@ class HomeScreen extends Component {
         <StatusBar backgroundColor={Colors.theme} barStyle="light-content" />
         {/* <View style={styles.viewPager}> */}
         <CommonHeader title={"Home"} noBack={true} rightImg={Images.navigation} rightPress={() => {
-          NavigationService.navigate("Details")
+          NavigationService.navigate("Map")
         }} />
         <ViewPager style={styles.viewPager}
           transitionStyle="curl" initialPage={0}>
           {
             list.map((item, index) => (
-              <ImageBackground source={{ uri: item.url }} style={{ flex: 1, alignItems: "center" }}
+              <CachedImage source={{ uri: item.url }} style={{ flex: 1, alignItems: "center" }}
                 key={index.toString()} resizeMode="cover">
                 <View style={{ width: "100%", padding: 10 }}>
                   <TextSemiBold title={item.title} style={{ textAlign: "center", textTransform: "capitalize" }} />
                 </View>
-                <Image source={{ uri: item.thumbnailUrl }} style={{
+                <CachedImage source={{ uri: item.thumbnailUrl }} style={{
                   width: Constants.width - 100,
                   height: 100, borderWidth: .5
-                }}></Image>
-              </ImageBackground>
+                }}></CachedImage>
+              </CachedImage>
             ))
           }
         </ViewPager>

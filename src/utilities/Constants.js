@@ -9,5 +9,6 @@ export default Constants = {
 	width: Dimensions.get("window").width,
 	currency: "₹",
 	version: "1.0.7",
+	GOOGLE_API_KEY: "AIzaSyAosp8khPAKxzalNtbz-fBup1VfPXMd3_A",
 	emailcontext: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
 };
