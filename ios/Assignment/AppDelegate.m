@@ -31,7 +31,7 @@
 // #ifdef FB_SONARKIT_ENABLED
 //   InitializeFlipper(application);
 // #endif
-  [GMSServices provideAPIKey:@"AIzaSyAosp8khPAKxzalNtbz-fBup1VfPXMd3_A"]; //for google maps
+  [GMSServices provideAPIKey:@"AIzaSyAIJLGdYQ-q1XW3-Lq9ANHfxU-A2YMNz3A"]; //for google maps
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
